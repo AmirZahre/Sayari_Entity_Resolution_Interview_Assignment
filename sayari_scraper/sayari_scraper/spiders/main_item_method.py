@@ -1,10 +1,3 @@
-# task: https://gist.github.com/jvani/57200744e1567f33041130840326d488
-# nested parser: https://medium.com/geekculture/nested-scrapy-spiders-explained-with-airbnbs-website-scraping-with-976b2762ef34
-
-# SOLUTION TO ITEM CLONE: https://stackoverflow.com/questions/41778543/scrapy-why-item-inside-for-loop-has-the-same-value-while-accessed-in-another-p
-# and https://stackoverflow.com/questions/57566087/scrapy-duplicate-item-fields-due-to-multiple-for-loops
-
-# scrapy crawl sayari_x_item_method -O item_crawler3.json
 import scrapy
 import json
 from scrapy.http import JsonRequest
@@ -29,6 +22,9 @@ class TestSpider(scrapy.Spider):
             callback=self.parse_initial_company_data
         )
 
+    """
+    Initial parse to retreive company name and preliminary data
+    """
     def parse_initial_company_data(self, response):
 
         data = json.loads(response.body)
@@ -42,9 +38,11 @@ class TestSpider(scrapy.Spider):
 
                 yield JsonRequest(url=f"https://firststop.sos.nd.gov/api/FilingDetail/business/{id}/false",
                                   callback=self.parse_additional_company_data,
-                                  cb_kwargs={'id': id, 'results': results})
-
-    def parse_additional_company_data(self, response, id, results):
+                                  cb_kwargs={'results': results})
+    """
+    Second parse to retreive additional (nested) company information
+    """
+    def parse_additional_company_data(self, response, results):
         data = json.loads(response.body)
         additional_data_list = data['DRAWER_DETAIL_LIST']
 
@@ -56,3 +54,11 @@ class TestSpider(scrapy.Spider):
         # Assign 'temp' data to additional_information = scrapy.Field()
         results['additional_information'] = {'DRAWER_DETAIL_LIST': temp}
         yield results
+
+# task: https://gist.github.com/jvani/57200744e1567f33041130840326d488
+# nested parser: https://medium.com/geekculture/nested-scrapy-spiders-explained-with-airbnbs-website-scraping-with-976b2762ef34
+
+# SOLUTION TO ITEM CLONE: https://stackoverflow.com/questions/41778543/scrapy-why-item-inside-for-loop-has-the-same-value-while-accessed-in-another-p
+# and https://stackoverflow.com/questions/57566087/scrapy-duplicate-item-fields-due-to-multiple-for-loops
+
+# scrapy crawl sayari_x_item_method -O item_crawler3.json
