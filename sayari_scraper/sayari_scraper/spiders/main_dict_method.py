@@ -1,6 +1,3 @@
-# task: https://gist.github.com/jvani/57200744e1567f33041130840326d488
-# nested parser: https://medium.com/geekculture/nested-scrapy-spiders-explained-with-airbnbs-website-scraping-with-976b2762ef34
-
 import scrapy
 import json
 from scrapy.http import JsonRequest
