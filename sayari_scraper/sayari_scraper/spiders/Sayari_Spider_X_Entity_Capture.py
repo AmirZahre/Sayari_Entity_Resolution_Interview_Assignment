@@ -1,6 +1,3 @@
-from sys import path
-path.append('/Users/amir/Projects/personal/sayari/sayari_scraper') # fixes path issues
-
 from sayari_scraper.items import BusinessResults
 from scrapy.crawler import CrawlerProcess
 from scrapy.http import JsonRequest
