@@ -1,9 +1,13 @@
 import scrapy
 import json
+from sys import path
+
+path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
 
 from scrapy.http import JsonRequest
 from scrapy.crawler import CrawlerProcess
 from sayari_scraper.items import BusinessResults
+
 
 
 class SayariSpider(scrapy.Spider):
