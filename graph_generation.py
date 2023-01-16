@@ -34,7 +34,6 @@ def create_nx_relationships(data):
 def create_connection_graph(graph, node_count: int, labels=False):
     i = 0
     date_today = datetime.today().strftime('%Y-%m-%d')
-    connections = []
     random.seed(10)  # random seed for node colours
 
     if labels:
@@ -50,7 +49,6 @@ def create_connection_graph(graph, node_count: int, labels=False):
     for g in C:
         c = [random.random()] * nx.number_of_nodes(g)  # random color
         if len(g.nodes()) > node_count:
-            connections.append(g.edges())
             nx.draw(g, pos, node_size=100, node_color=c, vmin=0.0, vmax=1.0,
                     with_labels=labels, bbox=dict(facecolor="whitesmoke"))
             i += 1
