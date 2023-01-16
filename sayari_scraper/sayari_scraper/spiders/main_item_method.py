@@ -1,10 +1,3 @@
-# task: https://gist.github.com/jvani/57200744e1567f33041130840326d488
-# nested parser: https://medium.com/geekculture/nested-scrapy-spiders-explained-with-airbnbs-website-scraping-with-976b2762ef34
-
-# SOLUTION TO ITEM CLONE: https://stackoverflow.com/questions/41778543/scrapy-why-item-inside-for-loop-has-the-same-value-while-accessed-in-another-p
-# and https://stackoverflow.com/questions/57566087/scrapy-duplicate-item-fields-due-to-multiple-for-loops
-
-# scrapy crawl sayari_x_item_method -O item_crawler3.json
 import scrapy
 import json
 
@@ -12,8 +5,8 @@ from scrapy.http import JsonRequest
 from scrapy.crawler import CrawlerProcess
 from sayari_scraper.items import BusinessResults
 
-from sys import path
-path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
+# from sys import path
+# path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
 
 
 class TestSpider(scrapy.Spider):
@@ -70,10 +63,11 @@ class TestSpider(scrapy.Spider):
         yield results
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # scrapy crawl sayari_x_item_method -O crawler_results.json
     process = CrawlerProcess(settings={
         "FEEDS": {
-            "data/crawler_results.json": {"format": "json"}, # saves result as json file
+            # saves result as json file
+            "data/crawler_results.json": {"format": "json"},
         },
     })
     process.crawl(TestSpider)

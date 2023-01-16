@@ -26,10 +26,7 @@ def create_nx_relationships(data):
                 # capture respective info (iterating through links[])
                 info = item['additional_information']['DRAWER_DETAIL_LIST'][link].split('\n')[
                     0]
-
-                # add captured business name, info to previously initialized graph as edge
-                graph.add_edge(business_name, info)
-
+                graph.add_edge(business_name, info) # add captured business name, info to previously initialized graph as edge
                 # Count number of unique items added to graph
                 unique_items.update([business_name, info])
 
@@ -71,7 +68,7 @@ def create_connection_graph(graph, node_count: int, labels=False):
     plt.savefig(
         f'data/entity_connections_{node_count}_node_min_labels_{labels}.png',
         bbox_inches='tight')
-    # plt.show()
+    plt.show()
 
 
 if __name__ == '__main__':
