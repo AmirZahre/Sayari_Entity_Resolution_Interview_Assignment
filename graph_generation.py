@@ -51,8 +51,6 @@ def create_connection_graph(graph, node_count: int, labels=False):
         c = [random.random()] * nx.number_of_nodes(g)  # random color
         if len(g.nodes()) > node_count:
             connections.append(g.edges())
-            edge_labels = nx.get_edge_attributes(g, 'label')
-
             nx.draw(g, pos, node_size=100, node_color=c, vmin=0.0, vmax=1.0,
                     with_labels=labels, bbox=dict(facecolor="whitesmoke"))
             i += 1
