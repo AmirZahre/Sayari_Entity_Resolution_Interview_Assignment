@@ -5,9 +5,9 @@
   <p align="center">
     This analysis was developed for Sayari as part of the hiring process for the role of Junior Data Engineer
     <br />
-    <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/Sayari_Spider_X_Entity_Capture.py"><strong>Check out the Scrapy Code »</strong></a>
+    <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/Sayari_Spider_X_Entity_Capture.py"><strong>Scrapy Crawler Code »</strong></a>
     <br />
-<a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation.py"><strong>Check out the Graph Code »</strong></a>
+<a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation.py"><strong>Graph Code »</strong></a>
     <br />
 	<br />
     <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/releases/tag/Sayari">Download</a>
