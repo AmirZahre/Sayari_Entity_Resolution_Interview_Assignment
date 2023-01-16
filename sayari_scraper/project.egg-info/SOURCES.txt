@@ -1,0 +1,14 @@
+setup.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
+sayari_scraper/__init__.py
+sayari_scraper/items.py
+sayari_scraper/middlewares.py
+sayari_scraper/pipelines.py
+sayari_scraper/settings.py
+sayari_scraper/spiders/__init__.py
+sayari_scraper/spiders/main_dict_method.py
+sayari_scraper/spiders/main_item_method.py
