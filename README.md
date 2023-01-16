@@ -22,13 +22,12 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-  - [Notable Insights](#notable-insights)
-  - [Graphs:](#graphs)
-  - [Built With](#built-with)
-  - [Built For](#built-for)
-  - [Important Files (i.e. my code)](#important-files-ie-my-code)
+- [Notable Insights](#notable-insights)
+- [Graphs](#graphs)
+- [Built With](#built-with)
+- [Built For](#built-for)
+- [Important Files (i.e. my code)](#important-files-ie-my-code)
 
 
 <!-- ABOUT THE PROJECT -->
