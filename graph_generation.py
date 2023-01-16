@@ -35,10 +35,10 @@ def create_connection_graph(graph, node_count: int, labels=False):
     i = 0
     date_today = datetime.today().strftime('%Y-%m-%d')
     connections = []
-    random.seed(10)
+    random.seed(10)  # random seed for node colours
 
     if labels:
-        plt.figure(1, figsize=(35, 35))
+        plt.figure(1, figsize=(35, 35))  # enlarge graph w/ labels
     else:
         plt.figure(1, figsize=(10, 10))
 
@@ -48,9 +48,9 @@ def create_connection_graph(graph, node_count: int, labels=False):
     # color nodes the same in each connected subgraph
     C = (graph.subgraph(c) for c in nx.connected_components(graph))
     for g in C:
+        c = [random.random()] * nx.number_of_nodes(g)  # random color
         if len(g.nodes()) > node_count:
             connections.append(g.edges())
-            c = [random.random()] * nx.number_of_nodes(g)  # random color...
             edge_labels = nx.get_edge_attributes(g, 'label')
 
             nx.draw(g, pos, node_size=100, node_color=c, vmin=0.0, vmax=1.0,
