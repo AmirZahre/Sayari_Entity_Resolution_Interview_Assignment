@@ -77,5 +77,5 @@ ___
  * [Sayari](https://sayari.com/) as part of the interview process.
   
 ### Important Files (i.e. my code)
- * [Scrapy Code](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/main_item_method.py) using **Scrapy Item** to capture the data **(preferred choice)**
+ * [Scrapy Code](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/Sayari_Spider_X_Entity_Capture.py) using **Scrapy Item** to capture the data **(preferred choice)**
  * [networkx graph](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation.py) Code used to create the graphs based on the output data from the Scrapy Crawler.
