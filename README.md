@@ -14,9 +14,9 @@
   <p align="center">
     This analysis was developed for Sayari as part of the hiring process for the role of Junior Data Engineer
     <br />
-    <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/main_item_method.py"><strong>Check out the Scrapy Code »</strong></a>
+    <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/Sayari_Spider_X_Entity_Capture.py"><strong>Check out the Scrapy Code »</strong></a>
     <br />
-<a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation/Business_Connections.ipynb"><strong>Check out the Graph Code »</strong></a>
+<a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation.py"><strong>Check out the Graph Code »</strong></a>
     <br />
 	<br />
     <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/releases/tag/Sayari">Download</a>
@@ -33,7 +33,6 @@
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-    - [Tools Used:](#tools-used)
   - [Notable Insights](#notable-insights)
   - [Built With](#built-with)
   - [Built For](#built-for)
@@ -43,18 +42,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The Secretary of State of North Dakota provides a business search [web app](https://firststop.sos.nd.gov/search/business) that allows users to search for businesses by name. This assignment revolves around scraping a subset of this data, followed by visualizing any connections amongst businesses, agents (both commercial and noncommercial), as well as owners.
-
-#### Tools Used:
-* [**Scrapy**](https://docs.scrapy.org/en/latest/) to scrape the data;
-* [**Graphviz's Atlas Layout**](https://networkx.org/documentation/latest/auto_examples/graphviz_layout/plot_atlas.html#sphx-glr-auto-examples-graphviz-layout-plot-atlas-py) to visualize connecting nodes;
-* **Jupyter** to analyze and create graphs of the data;
-* **Python** as the language of choice for the aforementioned steps.
+The Secretary of State of North Dakota provides a business search [web app](https://firststop.sos.nd.gov/search/business) that allows users to search for businesses by name. This assignment involves conducting entity resolution on a subset of this data, followed by visualizing any connections amongst businesses, agents (both commercial and noncommercial), as well as owners.
 
 ### Notable Insights
 
  *  There are 108 connections (edges, at least one business name connected to one entity). Of these 108, there are only twelve connections (edges) where three of more nodes exist.
  * **Incorp Services, Inc.**, **C T Corporation System**, and **Corporation Service Company** are affiliated with the greatest number of entities when compared to their peers.
+
+![Graph 1: All Edges and Nodes, No Labels](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/data/entity_connections_graph_1_node_minimum_with_labels_False.png)
 
 ___
 ### Built With
@@ -73,8 +68,10 @@ ___
 
   
 <!-- MARKDOWN LINKS & IMAGES -->
+[license-shield]: https://img.shields.io/github/license/AmirZahre/Github_Org_Repo_Analysis?label=license
+[license-url]: https://github.com/AmirZahre/Github_Org_Repo_Analysis/blob/main/LICENSE.md
 [issues-shield]: https://img.shields.io/github/issues/AmirZahre/Github_Org_Repo_Analysis
-[issues-url]: https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/issues
+[issues-url]: https://github.com/AmirZahre/Github_Org_Repo_Analysis/issues
 [forks-shield]: https://img.shields.io/github/forks/AmirZahre/Github_Org_Repo_Analysis
 [forks-url]: https://github.com/AmirZahre/Github_Org_Repo_Analysis/network/members
 [cSize-shield]: https://img.shields.io/github/languages/code-size/AmirZahre/Github_Org_Repo_Analysis
