@@ -6,7 +6,7 @@ from scrapy.crawler import CrawlerProcess
 from sayari_scraper.items import BusinessResults
 
 
-class TestSpider(scrapy.Spider):
+class SayariSpider(scrapy.Spider):
     name = 'sayari_x_item_method'
 
     def start_requests(self):
@@ -52,11 +52,11 @@ class TestSpider(scrapy.Spider):
         yield results
 
 
-if __name__ == '__main__':  # scrapy crawl sayari_x_item_method -O crawler_results.json
+if __name__ == '__main__':  # == scrapy crawl sayari_x_item_method -O crawler_results.json
     process = CrawlerProcess(settings={
         "FEEDS": {
-            "data/crawler_results.json": {"format": "json"},  # save to json
+            "data/crawler_results.json": {"format": "json", "overwrite": True},  # save item to json, overwrite existing
         },
     })
-    process.crawl(TestSpider)
+    process.crawl(SayariSpider)
     process.start()

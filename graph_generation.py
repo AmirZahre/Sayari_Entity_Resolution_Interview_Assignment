@@ -60,7 +60,7 @@ def create_connection_graph(graph, node_count: int, labels=False):
     plt.title(
         f'Graph Generated on {date_today}. \n There are {i} Edges with a Node Count Greater than {node_count}.')
     plt.savefig(
-        f'data/entity_connections_{node_count}_node_min_labels_{labels}.png',
+        f'data/entity_connections_graph_{node_count}_node_minimum_with_labels_{labels}.png',
         bbox_inches='tight')
     plt.close()
 
