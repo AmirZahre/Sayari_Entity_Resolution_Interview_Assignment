@@ -35,7 +35,6 @@ def create_connection_graph(graph, node_count: int, labels=False):
     i = 0
     date_today = datetime.today().strftime('%Y-%m-%d')
     connections = []
-    GraphMatcher = nx.isomorphism.vf2userfunc.GraphMatcher
 
     if labels:
         plt.figure(1, figsize=(25, 25))
