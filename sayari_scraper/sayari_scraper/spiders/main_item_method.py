@@ -7,11 +7,16 @@
 # scrapy crawl sayari_x_item_method -O item_crawler3.json
 import scrapy
 import json
+
 from scrapy.http import JsonRequest
+from scrapy.crawler import CrawlerProcess
 from sayari_scraper.items import BusinessResults
 
-class TestSpider(scrapy.Spider):
+from sys import path
+path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
 
+
+class TestSpider(scrapy.Spider):
     name = 'sayari_x_item_method'
 
     def start_requests(self):
@@ -32,6 +37,7 @@ class TestSpider(scrapy.Spider):
     """
     Initial parse to retreive company name and preliminary info
     """
+
     def parse_initial_company_data(self, response):
 
         data = json.loads(response.body)
@@ -49,6 +55,7 @@ class TestSpider(scrapy.Spider):
     """
     Second parse to retreive additional (nested) company information
     """
+
     def parse_additional_company_data(self, response, results):
         data = json.loads(response.body)
         additional_data_list = data['DRAWER_DETAIL_LIST']
@@ -61,3 +68,13 @@ class TestSpider(scrapy.Spider):
         # Assign 'temp' data to additional_information = scrapy.Field()
         results['additional_information'] = {'DRAWER_DETAIL_LIST': temp}
         yield results
+
+
+if __name__ == '__main__':
+    process = CrawlerProcess(settings={
+        "FEEDS": {
+            "crawler_results.json": {"format": "json"}, # saves result as json file
+        },
+    })
+    process.crawl(TestSpider)
+    process.start()
