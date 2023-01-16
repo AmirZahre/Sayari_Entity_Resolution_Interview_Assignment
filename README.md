@@ -23,8 +23,10 @@
 ## Table of Contents
 
 - [About The Project](#about-the-project)
-- [Notable Insights](#notable-insights)
-- [Graphs](#graphs)
+	- [How to Run](#how-to-run)
+	- [Process](#process)
+	- [Notable Insights](#notable-insights)
+	- [Graphs](#graphs)
 - [Built With](#built-with)
 - [Built For](#built-for)
 - [Important Files (i.e. my code)](#important-files-ie-my-code)
@@ -35,7 +37,19 @@
 
 The Secretary of State of North Dakota provides a business search [web app](https://firststop.sos.nd.gov/search/business) that allows users to search for businesses by name. This assignment involves conducting entity resolution on a subset of this data, followed by visualizing any connections amongst businesses, agents (both commercial and noncommercial), as well as owners.
 
-### Notable Insights
+### How to Run:
+1. Create a Python virtual environment by executing `python -m venv venv`. Activate the virtual environment with the command `source bin/venv/activate`.
+2. Download the required packages by executing the command `pip install -r requirements.txt`.
+
+3. Finally, to run the script, invoke `main.py` from the top-level of the folder by executing the command `python main.py`.
+
+### Process:
+
+1. `main.py` will invoke the scraper, located in `sayari_scraper/sayari_scraper/spiders/Sayari_Spider_X_Entity_Capture.py`, via. subprocess. It will then save the collected data in the folder `/data` as `crawler_results.json`.
+2. `main.py` will then invoke the file `graph_generation.py`, which will then use `crawler_results.json` to create the graphs shown below. These graphs will also be saved within the `/data` folder.
+
+
+### Notable Insights:
 
  *  There are 108 connections (edges, at least one business name connected to one entity). Of these 108, there are only 12 connections (edges) where three of more nodes exist.
  * **Incorp Services, Inc.**, **C T Corporation System**, and **Corporation Service Company** are affiliated with the greatest number of entities when compared to their peers.
