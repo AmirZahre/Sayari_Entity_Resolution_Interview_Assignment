@@ -1,13 +1,11 @@
+from sayari_scraper.items import BusinessResults
+from scrapy.crawler import CrawlerProcess
+from scrapy.http import JsonRequest
 import scrapy
 import json
+
 from sys import path
-
 path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
-
-from scrapy.http import JsonRequest
-from scrapy.crawler import CrawlerProcess
-from sayari_scraper.items import BusinessResults
-
 
 
 class SayariSpider(scrapy.Spider):
@@ -59,7 +57,8 @@ class SayariSpider(scrapy.Spider):
 if __name__ == '__main__':  # == scrapy crawl sayari_x_item_method -O crawler_results.json
     process = CrawlerProcess(settings={
         "FEEDS": {
-            "data/crawler_results.json": {"format": "json", "overwrite": True},  # save item to json, overwrite existing
+            # save item to json, overwrite existing
+            "data/crawler_results.json": {"format": "json", "overwrite": True},
         },
     })
     process.crawl(SayariSpider)
