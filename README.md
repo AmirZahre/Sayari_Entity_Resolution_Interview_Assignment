@@ -30,6 +30,7 @@
 - [Built With](#built-with)
 - [Built For](#built-for)
 - [Important Files (i.e. my code)](#important-files-ie-my-code)
+- [Known Issues](#known-issues)
 
 
 <!-- ABOUT THE PROJECT -->
@@ -79,3 +80,7 @@ ___
 ### Important Files (i.e. my code)
  * [Scrapy Code](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/Sayari_Spider_X_Entity_Capture.py) using **Scrapy Item** to capture the data **(preferred choice)**
  * [networkx graph](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation.py) Code used to create the graphs based on the output data from the Scrapy Crawler.
+ 
+ ### Known Issues:
+- graphviz on Mac M1: Follow [this guide](https://github.com/pygraphviz/pygraphviz/issues/398) on installing graphviz if you're experiencing issues and are using an M1 computer.
+- Issues with Scrapy Items() pathing can be solved via [this guide](https://www.youtube.com/watch?v=V8lUh8mY-UI). This fix has also been implimented.
