@@ -82,5 +82,16 @@ ___
  * [networkx graph](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation.py) Code used to create the graphs based on the output data from the Scrapy Crawler.
  
  ### Known Issues:
-- graphviz on Mac M1: Follow [this guide](https://github.com/pygraphviz/pygraphviz/issues/398) on installing graphviz if you're experiencing issues and are using an M1 computer.
+- graphviz on Mac M1: Follow [this guide](https://github.com/pygraphviz/pygraphviz/issues/398) on installing graphviz if you're experiencing issues and are 
+using an M1 computer.
+
+```
+brew install graphviz
+python -m pip install \
+    --global-option=build_ext \
+    --global-option="-I$(brew --prefix graphviz)/include/" \
+    --global-option="-L$(brew --prefix graphviz)/lib/" \
+    pygraphviz
+```
+
 - Issues with Scrapy Items() pathing can be solved via [this guide](https://www.youtube.com/watch?v=V8lUh8mY-UI). This fix has also been implimented.
