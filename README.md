@@ -4,19 +4,13 @@
 
   <p align="center">
     This analysis was developed for Sayari as part of the hiring process for the role of Junior Data Engineer
+      </p>
+</p>
     <br />
     <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/sayari_scraper/sayari_scraper/spiders/Sayari_Spider_X_Entity_Capture.py"><strong>Scrapy Crawler Code »</strong></a>
     <br />
 <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/graph_generation.py"><strong>Graph Code »</strong></a>
     <br />
-	<br />
-    <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/releases/tag/Sayari">Download</a>
-    ·
-    <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/issues">Request Feature</a>
-  </p>
-</p>
 
 
 <!-- TABLE OF CONTENTS -->
