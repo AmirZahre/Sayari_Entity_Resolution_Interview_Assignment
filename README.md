@@ -37,7 +37,7 @@ The Secretary of State of North Dakota provides a business search [web app](http
 
 ### Notable Insights
 
- *  There are 108 connections (edges, at least one business name connected to one entity). Of these 108, there are only twelve connections (edges) where three of more nodes exist.
+ *  There are 108 connections (edges, at least one business name connected to one entity). Of these 108, there are only 12 connections (edges) where three of more nodes exist.
  * **Incorp Services, Inc.**, **C T Corporation System**, and **Corporation Service Company** are affiliated with the greatest number of entities when compared to their peers.
 
 
