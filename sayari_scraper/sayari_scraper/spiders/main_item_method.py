@@ -5,9 +5,6 @@ from scrapy.http import JsonRequest
 from scrapy.crawler import CrawlerProcess
 from sayari_scraper.items import BusinessResults
 
-# from sys import path
-# path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
-
 
 class TestSpider(scrapy.Spider):
     name = 'sayari_x_item_method'
@@ -20,19 +17,13 @@ class TestSpider(scrapy.Spider):
             "ACTIVE_ONLY_YN": "true"  # Active only
         }
 
-        # POST request while passing off the above payload
-        yield JsonRequest(
+        yield JsonRequest(  # POST request while passing off the above payload
             url=url,
             data=payload,
             callback=self.parse_initial_company_data
         )
 
-    """
-    Initial parse to retreive company name and preliminary info
-    """
-
-    def parse_initial_company_data(self, response):
-
+    def parse_initial_company_data(self, response):  # Initial parse
         data = json.loads(response.body)
 
         for id, value in data['rows'].items():
@@ -45,10 +36,8 @@ class TestSpider(scrapy.Spider):
                 yield JsonRequest(url=f"https://firststop.sos.nd.gov/api/FilingDetail/business/{id}/false",
                                   callback=self.parse_additional_company_data,
                                   cb_kwargs={'results': results})
-    """
-    Second parse to retreive additional (nested) company information
-    """
 
+    # Second parse (additional info)
     def parse_additional_company_data(self, response, results):
         data = json.loads(response.body)
         additional_data_list = data['DRAWER_DETAIL_LIST']
@@ -66,8 +55,7 @@ class TestSpider(scrapy.Spider):
 if __name__ == '__main__':  # scrapy crawl sayari_x_item_method -O crawler_results.json
     process = CrawlerProcess(settings={
         "FEEDS": {
-            # saves result as json file
-            "data/crawler_results.json": {"format": "json"},
+            "data/crawler_results.json": {"format": "json"},  # save to json
         },
     })
     process.crawl(TestSpider)
