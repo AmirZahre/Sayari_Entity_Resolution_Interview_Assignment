@@ -34,6 +34,7 @@
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
   - [Notable Insights](#notable-insights)
+  - [Graphs:](#graphs)
   - [Built With](#built-with)
   - [Built For](#built-for)
   - [Important Files (i.e. my code)](#important-files-ie-my-code)
@@ -49,7 +50,16 @@ The Secretary of State of North Dakota provides a business search [web app](http
  *  There are 108 connections (edges, at least one business name connected to one entity). Of these 108, there are only twelve connections (edges) where three of more nodes exist.
  * **Incorp Services, Inc.**, **C T Corporation System**, and **Corporation Service Company** are affiliated with the greatest number of entities when compared to their peers.
 
+
+### Graphs:
+**Graph 1: All Edges and Nodes, No Labels**
 ![Graph 1: All Edges and Nodes, No Labels](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/data/entity_connections_graph_1_node_minimum_with_labels_False.png)
+
+**Graph 2: Nodes with More than Two Edges, No Labels**
+![Graph 2: Nodes with More than Two Edges, No Labels](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/data/entity_connections_graph_2_node_minimum_with_labels_False.png)
+
+**Graph 3: Nodes with More than Two Edges, With Labels**
+![Graph 3: Nodes with More than Two Edges, With Labels](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/data/entity_connections_graph_2_node_minimum_with_labels_True.png)
 
 ___
 ### Built With
