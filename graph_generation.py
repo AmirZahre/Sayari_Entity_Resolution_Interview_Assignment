@@ -9,7 +9,7 @@ def create_nx_relationships(data):
     graph = nx.Graph()  # init nx graph.
     # list of keys to capture
     entities = ['Owners', 'Owner Name',
-                   'Commercial Registered Agent', 'Registered Agent']
+                'Commercial Registered Agent', 'Registered Agent']
 
     # capture business name <> link
     for entity in entities:
