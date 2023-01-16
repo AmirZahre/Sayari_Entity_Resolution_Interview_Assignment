@@ -38,7 +38,7 @@
 The Secretary of State of North Dakota provides a business search [web app](https://firststop.sos.nd.gov/search/business) that allows users to search for businesses by name. This assignment involves conducting entity resolution on a subset of this data, followed by visualizing any connections amongst businesses, agents (both commercial and noncommercial), as well as owners.
 
 ### How to Run:
-1. Create a Python virtual environment by executing `python -m venv venv`. Activate the virtual environment with the command `source bin/venv/activate`.
+1. Create a Python virtual environment by executing `python -m venv venv`. Activate the virtual environment with the command `source venv/bin/activate`.
 2. Download the required packages by executing the command `pip install -r requirements.txt`.
 
 3. Finally, to run the script, invoke `main.py` from the top-level of the folder by executing the command `python main.py`.
