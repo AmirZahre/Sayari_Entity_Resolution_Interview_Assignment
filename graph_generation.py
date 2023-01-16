@@ -35,9 +35,10 @@ def create_connection_graph(graph, node_count: int, labels=False):
     i = 0
     date_today = datetime.today().strftime('%Y-%m-%d')
     connections = []
+    random.seed(10)
 
     if labels:
-        plt.figure(1, figsize=(25, 25))
+        plt.figure(1, figsize=(35, 35))
     else:
         plt.figure(1, figsize=(10, 10))
 
@@ -53,7 +54,7 @@ def create_connection_graph(graph, node_count: int, labels=False):
             edge_labels = nx.get_edge_attributes(g, 'label')
 
             nx.draw(g, pos, node_size=100, node_color=c, vmin=0.0, vmax=1.0,
-                    with_labels=labels, bbox=dict(facecolor="lightgrey"))
+                    with_labels=labels, bbox=dict(facecolor="whitesmoke"))
             i += 1
 
     plt.title(
