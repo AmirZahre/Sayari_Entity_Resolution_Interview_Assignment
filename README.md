@@ -20,6 +20,7 @@
 	- [How to Run](#how-to-run)
 	- [Process](#process)
 	- [Notable Insights](#notable-insights)
+	- [Potential Future Enhancements](#potential-future-enhancements)
 	- [Graphs](#graphs)
 - [Built With](#built-with)
 - [Built For](#built-for)
@@ -48,6 +49,12 @@ The Secretary of State of North Dakota provides a business search [web app](http
 
  *  There are 108 connections (edges, at least one business name connected to one entity). Of these 108, there are only 12 connections (edges) where three or more nodes exist.
  * **Incorp Services, Inc.**, **C T Corporation System**, and **Corporation Service Company** are affiliated with the greatest number of entities when compared to their peers.
+ 
+### Potential Future Enhancements:
+
+* Incorporate Airflow with this process to schedule frequent scrapes and graph generations on a regular interval.
+* Capture (1) the scrapy results by either pointing the BusinessResults() Item feed to an [S3 bucket](https://docs.scrapy.org/en/latest/topics/feed-exports.html#s3) or using Airflow's [LocalFilesystemToS3Operator](https://airflow.apache.org/docs/apache-airflow-providers-amazon/3.3.0/operators/transfer/local_to_s3.html), and (2) capture the generated graphs using [LocalFilesystemToS3Operator](https://airflow.apache.org/docs/apache-airflow-providers-amazon/3.3.0/operators/transfer/local_to_s3.html).
+
 
 
 ### Graphs:
@@ -59,7 +66,6 @@ The Secretary of State of North Dakota provides a business search [web app](http
 
 **Graph 3: Nodes with More than Two Edges, With Labels**
 ![Graph 3: Nodes with More than Two Edges, With Labels](https://github.com/AmirZahre/Sayari_Entity_Resolution_Interview_Assignment/blob/main/data/entity_connections_graph_2_node_minimum_with_labels_True.png)
-
 
 ___
 ### Built With
