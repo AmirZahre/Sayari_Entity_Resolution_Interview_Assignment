@@ -27,7 +27,7 @@ class SayariSpider(scrapy.Spider):
 
     def parse_initial_company_data(self, response):  # Initial parse
         data = json.loads(response.body)
-
+        
         for id, value in data['rows'].items():
             results = BusinessResults()
             # Ensure the title of the business begins with X
