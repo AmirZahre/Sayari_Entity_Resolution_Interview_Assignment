@@ -2,7 +2,7 @@ import scrapy
 import json
 from scrapy.http import JsonRequest
 
-
+# scrapy crawl sayari_x_dict_method
 class TestSpider(scrapy.Spider):
 
     name = 'sayari_x_dict_method'
@@ -73,7 +73,7 @@ class TestSpider(scrapy.Spider):
             self.results[id][item['LABEL']] = item['VALUE']
 
         # create a filename with the respective pages' number
-        filename = 'final_result2.json'
+        filename = '../data/crawler_results_DICT.json'
         with open(filename, 'w') as f:
             # writes the entire html from the page
             json.dump(self.results, f, indent=4)
