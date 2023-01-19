@@ -1,3 +1,5 @@
+from sys import path
+path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
 from sayari_scraper.items import BusinessResults
 from scrapy.crawler import CrawlerProcess
 from scrapy.http import JsonRequest
