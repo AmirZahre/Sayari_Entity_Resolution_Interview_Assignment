@@ -1,10 +1,9 @@
-from sys import path
-path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
-from sayari_scraper.items import BusinessResults
-from scrapy.crawler import CrawlerProcess
-from scrapy.http import JsonRequest
-import scrapy
 import json
+import scrapy
+from scrapy.http import JsonRequest
+from scrapy.crawler import CrawlerProcess
+from sayari_scraper.items import BusinessResults
+
 
 
 class SayariSpider(scrapy.Spider):
@@ -29,14 +28,12 @@ class SayariSpider(scrapy.Spider):
 
         for id, value in data['rows'].items():
             results = BusinessResults()
-            # Ensure the title of the business begins with X
-            if value['TITLE'][0].startswith('X'):
-                # Assign 'Business ID', 'Business Info' to business = scrapy.Field()
-                results['business'] = [{'ID': id}, {'Business Info': value}]
+            # Assign 'Business ID', 'Business Info' to business = scrapy.Field()
+            results['business'] = [{'ID': id}, {'Business Info': value}]
 
-                yield JsonRequest(url=f"https://firststop.sos.nd.gov/api/FilingDetail/business/{id}/false",
-                                  callback=self.parse_additional_company_data,
-                                  cb_kwargs={'results': results})
+            yield JsonRequest(url=f"https://firststop.sos.nd.gov/api/FilingDetail/business/{id}/false",
+                              callback=self.parse_additional_company_data,
+                              cb_kwargs={'results': results})
 
     # Second parse (additional info)
     def parse_additional_company_data(self, response, results):
@@ -50,15 +47,19 @@ class SayariSpider(scrapy.Spider):
 
         # Assign 'temp' data to additional_information = scrapy.Field()
         results['additional_information'] = {'DRAWER_DETAIL_LIST': temp}
-        yield results
+
+        yield results  # when Item() results is yielded, it passes through the pipeline
 
 
 if __name__ == '__main__':  # == scrapy crawl sayari_x_item_method -O crawler_results.json
-    process = CrawlerProcess(settings={
-        "FEEDS": {
-            # save item to json, overwrite existing
-            "data/crawler_results.json": {"format": "json", "overwrite": True},
-        },
-    })
+    settings = dict()
+    # invokes ConfirmBusinessStartsWithX pipeline to filter out non-X companies
+    settings['ITEM_PIPELINES'] = {
+        'sayari_scraper.pipelines.ConfirmBusinessStartsWithX': 1}
+    # saves the file as crawler_results.json within the /data folder
+    settings['FEEDS'] = {
+        "data/crawler_results.json": {"format": "json", "overwrite": True}, }
+
+    process = CrawlerProcess(settings=settings)
     process.crawl(SayariSpider)
     process.start()
