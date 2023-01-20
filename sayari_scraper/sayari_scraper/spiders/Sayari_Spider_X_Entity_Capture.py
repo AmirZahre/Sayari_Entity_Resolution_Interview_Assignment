@@ -1,9 +1,11 @@
+from sys import path
+path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
 import json
 import scrapy
 from scrapy.http import JsonRequest
 from scrapy.crawler import CrawlerProcess
 from sayari_scraper.items import BusinessResults
-
+from datetime import datetime
 
 
 class SayariSpider(scrapy.Spider):
@@ -52,13 +54,14 @@ class SayariSpider(scrapy.Spider):
 
 
 if __name__ == '__main__':  # == scrapy crawl sayari_x_item_method -O crawler_results.json
+    date_today = datetime.today().strftime('%Y-%m-%d')
     settings = dict()
     # invokes ConfirmBusinessStartsWithX pipeline to filter out non-X companies
     settings['ITEM_PIPELINES'] = {
         'sayari_scraper.pipelines.ConfirmBusinessStartsWithX': 1}
     # saves the file as crawler_results.json within the /data folder
     settings['FEEDS'] = {
-        "data/crawler_results.json": {"format": "json", "overwrite": True}, }
+        f"data/{date_today}_crawler_results.json": {"format": "json", "overwrite": True}, }
 
     process = CrawlerProcess(settings=settings)
     process.crawl(SayariSpider)
