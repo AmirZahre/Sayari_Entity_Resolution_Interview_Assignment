@@ -64,9 +64,10 @@ CONCURRENT_REQUESTS = 5
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'sayari_scraper.pipelines.SayariScraperPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'sayari_scraper.pipelines.ConfirmBusinessStartsWithX': 1,
+   'sayari_scraper.pipelines.GoogleMySqlUpload': 2,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
