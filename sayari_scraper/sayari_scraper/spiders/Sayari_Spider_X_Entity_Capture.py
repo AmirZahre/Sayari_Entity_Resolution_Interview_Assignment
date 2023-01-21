@@ -1,16 +1,19 @@
 from sys import path
 path.append('/Users/amir/Projects/personal/sayari/sayari_scraper')
-import json
-import scrapy
-from scrapy.http import JsonRequest
-from scrapy.crawler import CrawlerProcess
-from sayari_scraper.items import BusinessResults
-from datetime import datetime
+
 from scrapy.exceptions import CloseSpider
+from datetime import datetime
+from sayari_scraper.items import BusinessResults
+from scrapy.crawler import CrawlerProcess
+from scrapy.http import JsonRequest
+import scrapy
+import json
+
 
 
 class SayariSpider(scrapy.Spider):
     name = 'sayari_x_item_method'
+    test = False
 
     def start_requests(self):
         url = "https://firststop.sos.nd.gov/api/Records/businesssearch"
@@ -44,15 +47,13 @@ class SayariSpider(scrapy.Spider):
         data = json.loads(response.body)
         additional_data_list = data['DRAWER_DETAIL_LIST']
 
-
-        ### testing purpose. limit to 10 items
-        scrape_count = self.crawler.stats.get_value('item_scraped_count')
-        print (scrape_count)
-        limit = 10
-        if scrape_count == limit:
-            raise CloseSpider('Limit Reached')
-
-
+        if self.test:
+            # testing method. limit to 10 items
+            scrape_count = self.crawler.stats.get_value('item_scraped_count')
+            print(scrape_count)
+            limit = 10
+            if scrape_count == limit:
+                raise CloseSpider('Limit Reached')
 
         temp = {}
         for item in additional_data_list:
