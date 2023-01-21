@@ -6,6 +6,7 @@ from scrapy.http import JsonRequest
 from scrapy.crawler import CrawlerProcess
 from sayari_scraper.items import BusinessResults
 from datetime import datetime
+from scrapy.exceptions import CloseSpider
 
 
 class SayariSpider(scrapy.Spider):
@@ -30,6 +31,7 @@ class SayariSpider(scrapy.Spider):
 
         for id, value in data['rows'].items():
             results = BusinessResults()
+
             # Assign 'Business ID', 'Business Info' to business = scrapy.Field()
             results['business'] = [{'ID': id}, {'Business Info': value}]
 
@@ -41,6 +43,16 @@ class SayariSpider(scrapy.Spider):
     def parse_additional_company_data(self, response, results):
         data = json.loads(response.body)
         additional_data_list = data['DRAWER_DETAIL_LIST']
+
+
+        ### testing purpose. limit to 10 items
+        scrape_count = self.crawler.stats.get_value('item_scraped_count')
+        print (scrape_count)
+        limit = 10
+        if scrape_count == limit:
+            raise CloseSpider('Limit Reached')
+
+
 
         temp = {}
         for item in additional_data_list:
@@ -58,7 +70,8 @@ if __name__ == '__main__':  # == scrapy crawl sayari_x_item_method -O crawler_re
     settings = dict()
     # invokes ConfirmBusinessStartsWithX pipeline to filter out non-X companies
     settings['ITEM_PIPELINES'] = {
-        'sayari_scraper.pipelines.ConfirmBusinessStartsWithX': 1}
+        'sayari_scraper.pipelines.ConfirmBusinessStartsWithX': 1,
+        'sayari_scraper.pipelines.GoogleMySqlUpload': 2}
     # saves the file as crawler_results.json within the /data folder
     settings['FEEDS'] = {
         f"data/{date_today}_crawler_results.json": {"format": "json", "overwrite": True}, }
