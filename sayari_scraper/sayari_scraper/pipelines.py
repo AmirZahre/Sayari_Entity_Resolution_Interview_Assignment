@@ -36,15 +36,17 @@ class GoogleMySqlUpload:
         self.date_today = datetime.today().strftime('%Y-%m-%d')
 
         print("UPLOADING ITEM")
+        # credentials saved as env variables. source ~/.bash_profile 
         self.conn = mysql.connector.connect(
-            host=os.environ['mysql_host'],
-            user=os.environ['mysql_user'],
-            password=os.environ['mysql_pass'],
-            database=os.environ['mysql_db']
+                host=os.environ['mysql_host'],
+                user=os.environ['mysql_user'],
+                password=os.environ['mysql_pass'],
+                database=os.environ['mysql_db']
         )
 
         self.cur = self.conn.cursor()
 
+        # create the table `scrapy_crawl_results` if it does not exist
         self.cur.execute("""
         CREATE TABLE IF NOT EXISTS scrapy_crawl_results (
             scrape_date DATE,
@@ -57,10 +59,12 @@ class GoogleMySqlUpload:
         """)
         self.conn.commit()
 
+    # feed the item into the SQL Insert function
     def process_item(self, item, spider):
         self.store_db(item)
         return item
 
+    # assign variable names to parsed item data, Insert to SQL table
     def store_db(self, item):
         additional_info_root = item['additional_information']['DRAWER_DETAIL_LIST']
 
@@ -89,9 +93,11 @@ class GoogleMySqlUpload:
         except:
             registered_agent = "NULL"
 
-        print(business_name, owners, owner_name,
+        # additional logging of items to be inserted
+        print("ITEMS TO BE UPLOADED: ", self.date_today, business_name, owners, owner_name,
               commercial_registered_agent, registered_agent)
 
+        # upload items
         self.cur.execute(f"""
         INSERT into scrapy_crawl_results (scrape_date, business_name, owners, owner_name, commercial_registered_agent, registered_agent) 
         values ('{self.date_today}', "{business_name}", "{owners}", "{owner_name}", "{commercial_registered_agent}", "{registered_agent}")
